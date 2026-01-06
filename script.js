@@ -1,24 +1,12 @@
 function theoryTotal(att, internals, insem, ese) {
-  return (
-    Number(att) +
-    Number(internals) +
-    Number(insem) +
-    Number(ese)
-  );
+  return Number(att || 0) +
+         Number(internals || 0) +
+         Number(insem || 0) +
+         Number(ese || 0);
 }
 
-
-async function saveToGoogleSheet(name, sgpa) {
-  await fetch("https://script.google.com/macros/s/AKfycbyDlcaNJPkDyhc0ZUxd7dfG3gmLxXphnTPocNJZKA5ItJVMUVo2WMsf4pXYQKm5EqkJHg/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      name: name,
-      sgpa: sgpa
-    })
-  });
-}
 function labTo100(marks, max) {
-  return (marks / max) * 100;
+  return (Number(marks || 0) / max) * 100;
 }
 
 function marksToGradePoint(marks) {
@@ -31,8 +19,25 @@ function marksToGradePoint(marks) {
   return 0;
 }
 
-document.getElementById("sgpaForm").addEventListener("submit", (e) => {
+async function saveToGoogleSheet(name, sgpa) {
+  await fetch(
+    "https://script.google.com/macros/s/AKfycbyDlcaNJPkDyhc0ZUxd7dfG3gmLxXphnTPocNJZKA5ItJVMUVo2WMsf4pXYQKm5EqkJHg/exec",
+    {
+      method: "POST",
+      body: JSON.stringify({ name, sgpa })
+    }
+  );
+}
+
+document.getElementById("sgpaForm").addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  // ✅ NAME VALIDATION
+  const name = document.getElementById("studentName").value.trim();
+  if (name === "") {
+    alert("Please enter your name first");
+    return;
+  }
 
   const subjects = [
     // THEORY
@@ -42,17 +47,14 @@ document.getElementById("sgpaForm").addEventListener("submit", (e) => {
     { marks: theoryTotal(cpps_att.value, cpps_int.value, cpps_insem.value, cpps_ese.value), credits: 2 },
     { marks: theoryTotal(ese_att.value, ese_int.value, ese_insem.value, ese_ese.value), credits: 2 },
 
-    // LABS / ACTIVITIES
+    // LABS
     { marks: labTo100(lacLab.value, 25), credits: 1 },
     { marks: labTo100(cstLab.value, 25), credits: 1 },
     { marks: labTo100(cgdLab.value, 25), credits: 1 },
     { marks: labTo100(cppsLab.value, 25), credits: 1 },
     { marks: labTo100(iidtl.value, 50), credits: 1 },
     { marks: labTo100(ss.value, 25), credits: 2 },
-    { marks: labTo100(cca.value, 25), credits: 1 },
-
-    // NPTEL (credit only)
-    { marks: 100, credits: 1 }
+    { marks: labTo100(cca.value, 25), credits: 1 }
   ];
 
   let totalCredits = 0;
@@ -64,14 +66,11 @@ document.getElementById("sgpaForm").addEventListener("submit", (e) => {
     totalCredits += sub.credits;
   });
 
-  const sgpa = (weightedPoints / totalCredits).toFixed(2);
+  const finalSGPA = (weightedPoints / totalCredits).toFixed(2);
 
   document.getElementById("result").innerHTML =
-    `🎯 <b>Your SGPA is ${sgpa}</b>`;
+    `🎯 <b>${name}, your SGPA is ${finalSGPA}</b>`;
+
+  // ✅ SAVE TO GOOGLE SHEET
+  await saveToGoogleSheet(name, finalSGPA);
 });
-const name = document.getElementById("studentName").value;
-const sgpa = finalSGPA.toFixed(2);
-
-saveToGoogleSheet(name, sgpa);
-
-
