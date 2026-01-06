@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>FY SGPA Calculator | PICT</title>
-  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="background"></div>
@@ -16,8 +18,21 @@
     <p>PICT First Year • Semester 1</p>
   </header>
 
-  <form id="sgpaForm">
+  <!-- 🔹 FORM START -->
+  <form id="sgpaForm" novalidate>
 
+    <!-- NAME -->
+    <section class="name-section">
+      <label for="studentName">👤 Enter Your Name</label>
+      <input
+        type="text"
+        id="studentName"
+        placeholder="Your Full Name"
+        required
+      >
+    </section>
+
+    <!-- THEORY -->
     <section>
       <h2>📘 Theory Subjects</h2>
 
@@ -25,32 +40,32 @@
       <div class="card">
         <h3>LAC <span>3 Credits</span></h3>
         <div class="grid">
-          <input placeholder="Attendance /5" id="lac_att" max="5" type="number">
-          <input placeholder="Internals /15" id="lac_int" max="15" type="number">
-          <input placeholder="In-Sem /20" id="lac_insem" max="20" type="number">
-          <input placeholder="End-Sem /60" id="lac_ese" max="60" type="number">
+          <input type="number" id="lac_att" placeholder="Attendance /5" min="0" max="5">
+          <input type="number" id="lac_int" placeholder="Internals /15" min="0" max="15">
+          <input type="number" id="lac_insem" placeholder="In-Sem /20" min="0" max="20">
+          <input type="number" id="lac_ese" placeholder="End-Sem /60" min="0" max="60">
         </div>
       </div>
 
       <!-- CST -->
       <div class="card">
-        <h3>CST/QP <span>2 Credits</span></h3>
+        <h3>CST / QP <span>2 Credits</span></h3>
         <div class="grid">
-          <input placeholder="Attendance /5" id="cst_att" max="5" type="number">
-          <input placeholder="Internals /15" id="cst_int" max="15" type="number">
-          <input placeholder="In-Sem /20" id="cst_insem" max="20" type="number">
-          <input placeholder="End-Sem /60" id="cst_ese" max="60" type="number">
+          <input type="number" id="cst_att" placeholder="Attendance /5" min="0" max="5">
+          <input type="number" id="cst_int" placeholder="Internals /15" min="0" max="15">
+          <input type="number" id="cst_insem" placeholder="In-Sem /20" min="0" max="20">
+          <input type="number" id="cst_ese" placeholder="End-Sem /60" min="0" max="60">
         </div>
       </div>
 
       <!-- CGD -->
       <div class="card">
-        <h3>CGD/MFR <span>2 Credits</span></h3>
+        <h3>CGD / MFR <span>2 Credits</span></h3>
         <div class="grid">
-          <input placeholder="Attendance /5" id="cgd_att" max="5" type="number">
-          <input placeholder="Internals /15" id="cgd_int" max="15" type="number">
-          <input placeholder="In-Sem /20" id="cgd_insem" max="20" type="number">
-          <input placeholder="End-Sem /60" id="cgd_ese" max="60" type="number">
+          <input type="number" id="cgd_att" placeholder="Attendance /5" min="0" max="5">
+          <input type="number" id="cgd_int" placeholder="Internals /15" min="0" max="15">
+          <input type="number" id="cgd_insem" placeholder="In-Sem /20" min="0" max="20">
+          <input type="number" id="cgd_ese" placeholder="End-Sem /60" min="0" max="60">
         </div>
       </div>
 
@@ -58,91 +73,88 @@
       <div class="card">
         <h3>CPPS <span>2 Credits</span></h3>
         <div class="grid">
-          <input placeholder="Attendance /5" id="cpps_att" max="5" type="number">
-          <input placeholder="Internals /15" id="cpps_int" max="15" type="number">
-          <input placeholder="In-Sem /20" id="cpps_insem" max="20" type="number">
-          <input placeholder="End-Sem /60" id="cpps_ese" max="60" type="number">
+          <input type="number" id="cpps_att" placeholder="Attendance /5" min="0" max="5">
+          <input type="number" id="cpps_int" placeholder="Internals /15" min="0" max="15">
+          <input type="number" id="cpps_insem" placeholder="In-Sem /20" min="0" max="20">
+          <input type="number" id="cpps_ese" placeholder="End-Sem /60" min="0" max="60">
         </div>
       </div>
 
       <!-- ESE -->
       <div class="card">
-        <h3>ESE/IEEE <span>2 Credits</span></h3>
+        <h3>ESE / IEEE <span>2 Credits</span></h3>
         <div class="grid">
-          <input placeholder="Attendance /5" id="ese_att" max="5" type="number">
-          <input placeholder="Internals /15" id="ese_int" max="15" type="number">
-          <input placeholder="In-Sem /20" id="ese_insem" max="20" type="number">
-          <input placeholder="End-Sem /60" id="ese_ese" max="60" type="number">
+          <input type="number" id="ese_att" placeholder="Attendance /5" min="0" max="5">
+          <input type="number" id="ese_int" placeholder="Internals /15" min="0" max="15">
+          <input type="number" id="ese_insem" placeholder="In-Sem /20" min="0" max="20">
+          <input type="number" id="ese_ese" placeholder="End-Sem /60" min="0" max="60">
         </div>
       </div>
     </section>
 
+    <!-- LABS -->
     <section>
       <h2>🧪 Labs & Activities</h2>
 
       <div class="card small">
         <label>LAC Lab /25</label>
-        <input type="number" id="lacLab" max="25">
+        <input type="number" id="lacLab" min="0" max="25">
       </div>
 
       <div class="card small">
-        <label>CST/QP Lab /25</label>
-        <input type="number" id="cstLab" max="25">
+        <label>CST / QP Lab /25</label>
+        <input type="number" id="cstLab" min="0" max="25">
       </div>
 
       <div class="card small">
-        <label>CGD/MFR Lab /25</label>
-        <input type="number" id="cgdLab" max="25">
+        <label>CGD / MFR Lab /25</label>
+        <input type="number" id="cgdLab" min="0" max="25">
       </div>
 
       <div class="card small">
         <label>CPPS Lab /25</label>
-        <input type="number" id="cppsLab" max="25">
+        <input type="number" id="cppsLab" min="0" max="25">
       </div>
 
       <div class="card small">
-        <label>IIDTL/IKS  /50</label>
-        <input type="number" id="iidtl" max="50">
+        <label>IIDTL / IKS /50</label>
+        <input type="number" id="iidtl" min="0" max="50">
       </div>
 
       <div class="card small">
-        <label>Soft Skills/FAB Lab /25</label>
-        <input type="number" id="ss" max="25">
+        <label>Soft Skills / FAB /25</label>
+        <input type="number" id="ss" min="0" max="25">
       </div>
 
       <div class="card small">
         <label>CCA-1 /25</label>
-        <input type="number" id="cca" max="25">
+        <input type="number" id="cca" min="0" max="25">
       </div>
 
       <div class="card note">
-        <p>NPTEL: Credit Only->NPTEL Credits are given free</p>   
+        <p>ℹ️ NPTEL is credit-only and not counted in SGPA.</p>
       </div>
     </section>
-<label>Enter Your Name</label>
-<input type="text" id="studentName" required placeholder="Your Name">
 
-    <button class="calculate">Calculate SGPA</button>
+    <!-- SUBMIT -->
+    <button class="calculate" type="submit">
+      Calculate SGPA
+    </button>
+
   </form>
+  <!-- 🔹 FORM END -->
 
-  <hr>
-<br>
-<br>
-
-
-  Created By: <a id="xyz"href=https://www.linkedin.com/in/krutant-deshmukh>Linkedin</a>
-
-
-  <br>
-  
   <div id="result" class="result"></div>
+
+  <footer>
+    Created By:
+    <a id="xyz" href="https://www.linkedin.com/in/krutant-deshmukh" target="_blank">
+      Krutant Deshmukh
+    </a>
+  </footer>
+
 </div>
 
 <script type="module" src="script.js"></script>
-
-
-
 </body>
-</html>l
-
-
+</html>
