@@ -19,14 +19,10 @@ function marksToGradePoint(marks) {
   return 0;
 }
 
-async function saveToGoogleSheet(name, sgpa) {
-  await fetch("https://script.google.com/macros/s/AKfycbyl7g_ah3vMi_VRvj-WbJWrXXhO4useWr_AoM3F7tsxpL27qTNoZk5oX7w-04HWyhDfGQ/exec", {
-  method: "POST",
-  body: JSON.stringify({
-    name: name,
-    sgpa: finalSGPA
-  })
-});
+import { db } from "./firebase.js";
+import { collection, addDoc, serverTimestamp } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 
 
 document.getElementById("sgpaForm").addEventListener("submit", async (e) => {
@@ -71,8 +67,15 @@ document.getElementById("sgpaForm").addEventListener("submit", async (e) => {
   document.getElementById("result").innerHTML =
     `🎯 <b>${name}, your SGPA is ${finalSGPA}</b>`;
 
-  // ✅ SAVE TO GOOGLE SHEET
-  await saveToGoogleSheet(name, finalSGPA);
+await addDoc(collection(db, "sgpa_records"), {
+  name: studentName,
+  sgpa: Number(sgpa),
+  subjects: subjects,
+  createdAt: serverTimestamp()
 });
+
+
+
+
 
 
