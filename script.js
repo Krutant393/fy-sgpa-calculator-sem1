@@ -20,14 +20,14 @@ function marksToGradePoint(marks) {
 }
 
 async function saveToGoogleSheet(name, sgpa) {
-  await fetch(
-    "https://script.google.com/macros/s/AKfycbyDlcaNJPkDyhc0ZUxd7dfG3gmLxXphnTPocNJZKA5ItJVMUVo2WMsf4pXYQKm5EqkJHg/exec",
-    {
-      method: "POST",
-      body: JSON.stringify({ name, sgpa })
-    }
-  );
-}
+  await fetch("https://script.google.com/macros/s/AKfycbyl7g_ah3vMi_VRvj-WbJWrXXhO4useWr_AoM3F7tsxpL27qTNoZk5oX7w-04HWyhDfGQ/exec", {
+  method: "POST",
+  body: JSON.stringify({
+    name: name,
+    sgpa: finalSGPA
+  })
+});
+
 
 document.getElementById("sgpaForm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -74,3 +74,4 @@ document.getElementById("sgpaForm").addEventListener("submit", async (e) => {
   // ✅ SAVE TO GOOGLE SHEET
   await saveToGoogleSheet(name, finalSGPA);
 });
+
