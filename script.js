@@ -7,6 +7,16 @@ function theoryTotal(att, internals, insem, ese) {
   );
 }
 
+
+async function saveToGoogleSheet(name, sgpa) {
+  await fetch("https://script.google.com/macros/s/AKfycbyDlcaNJPkDyhc0ZUxd7dfG3gmLxXphnTPocNJZKA5ItJVMUVo2WMsf4pXYQKm5EqkJHg/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      name: name,
+      sgpa: sgpa
+    })
+  });
+}
 function labTo100(marks, max) {
   return (marks / max) * 100;
 }
@@ -59,3 +69,9 @@ document.getElementById("sgpaForm").addEventListener("submit", (e) => {
   document.getElementById("result").innerHTML =
     `🎯 <b>Your SGPA is ${sgpa}</b>`;
 });
+const name = document.getElementById("studentName").value;
+const sgpa = finalSGPA.toFixed(2);
+
+saveToGoogleSheet(name, sgpa);
+
+
