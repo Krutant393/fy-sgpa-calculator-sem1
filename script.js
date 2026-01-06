@@ -1,8 +1,19 @@
+import { db } from "./firebase.js";
+import {
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+/* ---------- UTIL FUNCTIONS ---------- */
+
 function theoryTotal(att, internals, insem, ese) {
-  return Number(att || 0) +
-         Number(internals || 0) +
-         Number(insem || 0) +
-         Number(ese || 0);
+  return (
+    Number(att || 0) +
+    Number(internals || 0) +
+    Number(insem || 0) +
+    Number(ese || 0)
+  );
 }
 
 function labTo100(marks, max) {
@@ -19,63 +30,69 @@ function marksToGradePoint(marks) {
   return 0;
 }
 
-import { db } from "./firebase.js";
-import { collection, addDoc, serverTimestamp } 
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+/* ---------- MAIN LOGIC ---------- */
 
+document.addEventListener("DOMContentLoaded", () => {
 
+  const form = document.getElementById("sgpaForm");
 
-document.getElementById("sgpaForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  // ✅ NAME VALIDATION
-  const name = document.getElementById("studentName").value.trim();
-  if (name === "") {
-    alert("Please enter your name first");
-    return;
-  }
+    /* ---- NAME VALIDATION ---- */
+    const name = document.getElementById("studentName").value.trim();
+    if (name === "") {
+      alert("Please enter your name before calculating SGPA");
+      return;
+    }
 
-  const subjects = [
-    // THEORY
-    { marks: theoryTotal(lac_att.value, lac_int.value, lac_insem.value, lac_ese.value), credits: 3 },
-    { marks: theoryTotal(cst_att.value, cst_int.value, cst_insem.value, cst_ese.value), credits: 2 },
-    { marks: theoryTotal(cgd_att.value, cgd_int.value, cgd_insem.value, cgd_ese.value), credits: 2 },
-    { marks: theoryTotal(cpps_att.value, cpps_int.value, cpps_insem.value, cpps_ese.value), credits: 2 },
-    { marks: theoryTotal(ese_att.value, ese_int.value, ese_insem.value, ese_ese.value), credits: 2 },
+    /* ---- SUBJECT DATA ---- */
+    const subjects = [
+      { name: "LAC",  marks: theoryTotal(lac_att.value, lac_int.value, lac_insem.value, lac_ese.value), credits: 3 },
+      { name: "CST",  marks: theoryTotal(cst_att.value, cst_int.value, cst_insem.value, cst_ese.value), credits: 2 },
+      { name: "CGD",  marks: theoryTotal(cgd_att.value, cgd_int.value, cgd_insem.value, cgd_ese.value), credits: 2 },
+      { name: "CPPS", marks: theoryTotal(cpps_att.value, cpps_int.value, cpps_insem.value, cpps_ese.value), credits: 2 },
+      { name: "ESE",  marks: theoryTotal(ese_att.value, ese_int.value, ese_insem.value, ese_ese.value), credits: 2 },
 
-    // LABS
-    { marks: labTo100(lacLab.value, 25), credits: 1 },
-    { marks: labTo100(cstLab.value, 25), credits: 1 },
-    { marks: labTo100(cgdLab.value, 25), credits: 1 },
-    { marks: labTo100(cppsLab.value, 25), credits: 1 },
-    { marks: labTo100(iidtl.value, 50), credits: 1 },
-    { marks: labTo100(ss.value, 25), credits: 2 },
-    { marks: labTo100(cca.value, 25), credits: 1 }
-  ];
+      { name: "LAC Lab",  marks: labTo100(lacLab.value, 25), credits: 1 },
+      { name: "CST Lab",  marks: labTo100(cstLab.value, 25), credits: 1 },
+      { name: "CGD Lab",  marks: labTo100(cgdLab.value, 25), credits: 1 },
+      { name: "CPPS Lab", marks: labTo100(cppsLab.value, 25), credits: 1 },
+      { name: "IIDTL",    marks: labTo100(iidtl.value, 50), credits: 1 },
+      { name: "Soft Skills", marks: labTo100(ss.value, 25), credits: 2 },
+      { name: "CCA", marks: labTo100(cca.value, 25), credits: 1 }
+    ];
 
-  let totalCredits = 0;
-  let weightedPoints = 0;
+    /* ---- SGPA CALCULATION ---- */
+    let totalCredits = 0;
+    let weightedPoints = 0;
 
-  subjects.forEach(sub => {
-    const gp = marksToGradePoint(sub.marks);
-    weightedPoints += gp * sub.credits;
-    totalCredits += sub.credits;
+    subjects.forEach(sub => {
+      const gp = marksToGradePoint(sub.marks);
+      weightedPoints += gp * sub.credits;
+      totalCredits += sub.credits;
+    });
+
+    const finalSGPA = (weightedPoints / totalCredits).toFixed(2);
+
+    /* ---- UI RESULT ---- */
+    document.getElementById("result").innerHTML =
+      `🎯 <b>${name}, your SGPA is ${finalSGPA}</b>`;
+
+    /* ---- FIRESTORE SAVE ---- */
+    try {
+      await addDoc(collection(db, "sgpa_records"), {
+        name: name,
+        sgpa: Number(finalSGPA),
+        subjects: subjects,
+        createdAt: serverTimestamp()
+      });
+
+      console.log("✅ Data saved to Firestore");
+
+    } catch (error) {
+      console.error("❌ Firestore Error:", error);
+      alert("Failed to save data. Please try again.");
+    }
   });
-
-  const finalSGPA = (weightedPoints / totalCredits).toFixed(2);
-
-  document.getElementById("result").innerHTML =
-    `🎯 <b>${name}, your SGPA is ${finalSGPA}</b>`;
-
-await addDoc(collection(db, "sgpa_records"), {
-  name: studentName,
-  sgpa: Number(sgpa),
-  subjects: subjects,
-  createdAt: serverTimestamp()
 });
-
-
-
-
-
-
