@@ -10,12 +10,12 @@ function labTo100(marks, max) {
 }
 
 function marksToGradePoint(marks) {
-  if (marks >= 90) return 10;
-  if (marks >= 80) return 9;
-  if (marks >= 70) return 8;
-  if (marks >= 60) return 7;
-  if (marks >= 50) return 6;
-  if (marks >= 40) return 5;
+  if (marks >= 91) return 10;
+  if (marks >= 81) return 9;
+  if (marks >= 71) return 8;
+  if (marks >= 61) return 7;
+  if (marks >= 51) return 6;
+  if (marks >= 41) return 5;
   return 0;
 }
 
@@ -74,4 +74,5 @@ document.getElementById("sgpaForm").addEventListener("submit", async (e) => {
   // ✅ SAVE TO GOOGLE SHEET
   await saveToGoogleSheet(name, finalSGPA);
 });
+
 
