@@ -6,7 +6,6 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: #0f2027;
   background: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
   display: flex;
   justify-content: center;
@@ -20,6 +19,7 @@ body {
   backdrop-filter: blur(40px);
 }
 
+/* ===== APP ===== */
 .app {
   width: 95%;
   max-width: 900px;
@@ -30,6 +30,7 @@ body {
   z-index: 1;
 }
 
+/* ===== HEADER ===== */
 header {
   text-align: center;
   margin-bottom: 30px;
@@ -44,6 +45,7 @@ header p {
   opacity: 0.8;
 }
 
+/* ===== SECTIONS ===== */
 section {
   margin-bottom: 35px;
 }
@@ -53,6 +55,7 @@ section h2 {
   font-weight: 600;
 }
 
+/* ===== CARDS ===== */
 .card {
   background: rgba(255,255,255,0.15);
   border-radius: 16px;
@@ -94,6 +97,7 @@ section h2 {
   opacity: 0.85;
 }
 
+/* ===== INPUTS ===== */
 input {
   background: rgba(0,0,0,0.35);
   border: none;
@@ -112,6 +116,7 @@ input:focus {
   background: rgba(0,0,0,0.5);
 }
 
+/* ===== BUTTONS ===== */
 .calculate {
   width: 100%;
   padding: 16px;
@@ -129,6 +134,19 @@ input:focus {
   transform: scale(1.03);
 }
 
+.grade-btn {
+  margin: 20px auto;
+  display: block;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+  background: #ffffff;
+  color: #203a43;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===== RESULT ===== */
 .result {
   margin-top: 25px;
   text-align: center;
@@ -136,13 +154,7 @@ input:focus {
   font-weight: bold;
 }
 
-#xyz{
-text-align:center;
-font-weight:bold;
-transform:scale(1.90);
-color:grey;
-}
-
+/* ===== ALERT ===== */
 .top-alert {
   position: fixed;
   top: 0;
@@ -154,9 +166,71 @@ color:grey;
   padding: 14px;
   font-weight: 600;
   z-index: 9999;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
+/* ===== MODAL ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.modal-content {
+  background: #fff;
+  color: #000;
+  padding: 25px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+#closeModal {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #203a43;
+  color: white;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  margin-top: 30px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+#xyz {
+  color: #ccc;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* ===== UTIL ===== */
 .hidden {
   display: none;
 }
+
