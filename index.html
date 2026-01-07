@@ -23,15 +23,16 @@
   <form id="sgpaForm" novalidate>
 
     <!-- NAME -->
-    <section class="name-section">
-      <label for="studentName">👤 Enter Your Name</label>
-      <input
-        type="text"
-        id="studentName"
-        placeholder="Your Full Name"
-        required
-      >
-    </section>
+    <section>
+ <label>Enter Your Name *</label>
+<input
+  type="text"
+  id="studentName"
+  placeholder="Your Name"
+  required
+  minlength="3"
+/>
+</section>
 
     <!-- THEORY -->
     <section>
@@ -184,5 +185,6 @@
 <script type="module" src="script.js"></script>
 </body>
 </html>
+
 
 
