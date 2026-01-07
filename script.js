@@ -46,6 +46,14 @@ function saveToGoogleSheets(name, sgpa, subjects) {
 document.getElementById("sgpaForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
+
+  const studentName = document.getElementById("studentName").value.trim();
+
+if (studentName === "") {
+  alert("Please enter your name to calculate SGPA");
+  return;
+}
+
   const subjects = [
     { name: "LAC", marks: theoryTotal(lac_att.value, lac_int.value, lac_insem.value, lac_ese.value), credits: 3 },
     { name: "CST/QP", marks: theoryTotal(cst_att.value, cst_int.value, cst_insem.value, cst_ese.value), credits: 2 },
@@ -117,3 +125,4 @@ const gradeBtn = document.getElementById("gradeBtn");
 
 gradeBtn.onclick = () => modal.classList.remove("hidden");
 closeBtn.onclick = () => modal.classList.add("hidden");
+
