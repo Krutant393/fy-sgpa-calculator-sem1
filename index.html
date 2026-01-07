@@ -1,18 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>FY SGPA Calculator | PICT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-<!-- 🔔 NAME ALERT -->
-<div id="nameAlert" class="top-alert hidden">
-  ⚠️ Please enter your name to calculate SGPA
-</div>
 
 <div class="background"></div>
 
@@ -26,21 +23,21 @@
   <form id="sgpaForm" novalidate>
 
     <!-- NAME -->
-    <section>
-      <label>Enter Your Name *</label>
+    <section class="name-section">
+      <label for="studentName">👤 Enter Your Name</label>
       <input
         type="text"
         id="studentName"
-        placeholder="Your Name"
+        placeholder="Your Full Name"
         required
-        minlength="3"
-      />
+      >
     </section>
 
-    <!-- 📘 THEORY SUBJECTS -->
+    <!-- THEORY -->
     <section>
       <h2>📘 Theory Subjects</h2>
 
+      <!-- LAC -->
       <div class="card">
         <h3>LAC <span>3 Credits</span></h3>
         <div class="grid">
@@ -51,6 +48,7 @@
         </div>
       </div>
 
+      <!-- CST -->
       <div class="card">
         <h3>CST / QP <span>2 Credits</span></h3>
         <div class="grid">
@@ -61,6 +59,7 @@
         </div>
       </div>
 
+      <!-- CGD -->
       <div class="card">
         <h3>CGD / MFR <span>2 Credits</span></h3>
         <div class="grid">
@@ -71,6 +70,7 @@
         </div>
       </div>
 
+      <!-- CPPS -->
       <div class="card">
         <h3>CPPS <span>2 Credits</span></h3>
         <div class="grid">
@@ -81,6 +81,7 @@
         </div>
       </div>
 
+      <!-- ESE -->
       <div class="card">
         <h3>ESE / IEEE <span>2 Credits</span></h3>
         <div class="grid">
@@ -92,7 +93,7 @@
       </div>
     </section>
 
-    <!-- 🧪 LABS -->
+    <!-- LABS -->
     <section>
       <h2>🧪 Labs & Activities</h2>
 
@@ -132,7 +133,7 @@
       </div>
 
       <div class="card note">
-        ℹ️ NPTEL is credit-only and not counted in SGPA
+        <p>ℹ️ NPTEL is credit-only and not counted in SGPA.</p>
       </div>
     </section>
 
@@ -146,25 +147,30 @@
 
   <div id="result" class="result"></div>
 
-  <!-- 📊 GRADE CARD -->
-  <button id="gradeBtn" type="button" class="grade-btn hidden">
-    📊 View Grade Card
-  </button>
 
-  <div id="gradeModal" class="modal hidden">
-    <div class="modal-content">
-      <span id="closeModal" role="button" aria-label="Close">&times;</span>
-      <h2>📘 Grade Card</h2>
-      <table id="gradeTable">
-        <tr>
-          <th>Subject</th>
-          <th>Marks</th>
-          <th>Grade</th>
-          <th>GP</th>
-        </tr>
-      </table>
-    </div>
+
+
+
+
+  <button id="gradeBtn" class="grade-btn hidden">
+  📊 View Grade Card
+</button>
+
+<div id="gradeModal" class="modal hidden">
+  <div class="modal-content">
+    <span id="closeModal">&times;</span>
+    <h2>📘 Grade Card</h2>
+    <table id="gradeTable">
+      <tr>
+        <th>Subject</th>
+        <th>Marks</th>
+        <th>Grade</th>
+        <th>GP</th>
+      </tr>
+    </table>
   </div>
+</div>
+
 
   <footer>
     Created By:
@@ -172,6 +178,7 @@
       Krutant Deshmukh
     </a>
   </footer>
+
 </div>
 
 <script type="module" src="script.js"></script>
