@@ -42,17 +42,22 @@ function saveToGoogleSheets(name, sgpa, subjects) {
   .catch(err => console.error("❌ Sheets Error:", err));
 }
 
+
+const nameAlert = document.getElementById("nameAlert");
+const nameInput = document.getElementById("studentName");
 /* ===== MAIN LOGIC ===== */
 document.getElementById("sgpaForm").addEventListener("submit", (e) => {
   e.preventDefault();
+ const studentName = nameInput.value.trim();
 
+  if (studentName === "") {
+    nameAlert.classList.remove("hidden");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
 
-  const studentName = document.getElementById("studentName").value.trim();
+  nameAlert.classList.add("hidden");
 
-if (studentName === "") {
-  alert("Please enter your name to calculate SGPA");
-  return;
-}
 
   const subjects = [
     { name: "LAC", marks: theoryTotal(lac_att.value, lac_int.value, lac_insem.value, lac_ese.value), credits: 3 },
@@ -125,4 +130,5 @@ const gradeBtn = document.getElementById("gradeBtn");
 
 gradeBtn.onclick = () => modal.classList.remove("hidden");
 closeBtn.onclick = () => modal.classList.add("hidden");
+
 
