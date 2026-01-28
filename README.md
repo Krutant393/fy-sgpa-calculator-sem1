@@ -1,7 +1,7 @@
 🎓 FY SGPA Calculator – PICT (Semester 1)
 
 🔗 Live Website:
-👉 https://fy-sgpa-calculator-sem1-x-git-6683f7-krutant-deshmukhs-projects.vercel.app
+👉 https://pictsgpa-calculator.vercel.app/
 
 A modern, responsive SGPA Calculator for PICT First Year Engineering students (Semester 1), built according to PICT / SPPU evaluation rules.
 
