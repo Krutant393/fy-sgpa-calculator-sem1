@@ -55,9 +55,7 @@ Card-based layout
 
 Smooth user experience
 
-☁️ Firebase Firestore Integration
 
-Stores student name, marks, SGPA, and timestamp
 
 Real-time database backend
 
