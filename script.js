@@ -8,14 +8,15 @@ function labTo100(marks, max) {
 }
 
 function marksToGradePoint(marks) {
-  if (marks >= 91) return 10;
-  if (marks >= 81) return 9;
-  if (marks >= 71) return 8;
-  if (marks >= 61) return 7;
-  if (marks >= 51) return 6;
+if (marks >= 91) return 10;
+if (marks >= 81) return 9;
+if (marks >= 71) return 8;
+if (marks >= 61) return 7;
+ if (marks >= 51) return 6;
   if (marks >= 41) return 5;
-  return 0;
+    return 0;
 }
+
 
 function gradeFromGP(gp) {
   if (gp === 10) return "O";
@@ -42,23 +43,23 @@ function saveToGoogleSheets(name, sgpa, subjects) {
   .catch(err => console.error("❌ Sheets Error:", err));
 }
 
-/* ===== MAIN LOGIC ===== */
-document.getElementById("sgpaForm").addEventListener("submit", (e) => {
-  e.preventDefault();
 
-  /* 🔴 NAME VALIDATION */
-  const studentName = document.getElementById("studentName").value.trim();
+      document.getElementById("sgpaForm").addEventListener("submit", (e) => {
+  e.preventDefault();//refresh preventation
+
+
+       const studentName = document.getElementById("studentName").value.trim();
   if (studentName === "") {
-    alert("⚠️ Please enter your name before calculating SGPA!");
+  alert("⚠️ Please enter your name before calculating SGPA!");
     return;
   }
 
   const subjects = [
-    { name: "LAC", marks: theoryTotal(lac_att.value, lac_int.value, lac_insem.value, lac_ese.value), credits: 3 },
-    { name: "CST/QP", marks: theoryTotal(cst_att.value, cst_int.value, cst_insem.value, cst_ese.value), credits: 2 },
-    { name: "CGD/MFR", marks: theoryTotal(cgd_att.value, cgd_int.value, cgd_insem.value, cgd_ese.value), credits: 2 },
-    { name: "CPPS", marks: theoryTotal(cpps_att.value, cpps_int.value, cpps_insem.value, cpps_ese.value), credits: 2 },
-    { name: "ESE/IEEE", marks: theoryTotal(ese_att.value, ese_int.value, ese_insem.value, ese_ese.value), credits: 2 },
+    { name:"LAC",marks:theoryTotal(lac_att.value, lac_int.value, lac_insem.value, lac_ese.value) ,    credits: 3 },
+    { name:"CST/QP",marks:theoryTotal(cst_att.value, cst_int.value, cst_insem.value, cst_ese.value),  credits: 2 },
+    { name:"CGD/MFR",marks:theoryTotal(cgd_att.value, cgd_int.value, cgd_insem.value, cgd_ese.value),   credits: 2 },
+    { name:"CPPS/OOPS",marks:theoryTotal(cpps_att.value, cpps_int.value, cpps_insem.value, cpps_ese.value),    credits: 2 },
+    { name:"ESE/IEEE",marks:theoryTotal(ese_att.value, ese_int.value, ese_insem.value, ese_ese.value),   credits: 2 },
 
     { name: "LAC Lab", marks: labTo100(lacLab.value, 25), credits: 1 },
     { name: "CST Lab", marks: labTo100(cstLab.value, 25), credits: 1 },
@@ -83,10 +84,10 @@ document.getElementById("sgpaForm").addEventListener("submit", (e) => {
   document.getElementById("result").innerHTML =
     `🎯 <b>${studentName}, your SGPA is ${sgpa}</b>`;
 
-  /* ===== SAVE TO GOOGLE SHEETS ===== */
+  //google sheet auth
   saveToGoogleSheets(studentName, sgpa, subjects);
 
-  /* ===== GRADE CARD ===== */
+//grade tablee by dom
   const gradeTable = document.getElementById("gradeTable");
   const gradeBtn = document.getElementById("gradeBtn");
 
@@ -116,7 +117,7 @@ document.getElementById("sgpaForm").addEventListener("submit", (e) => {
   gradeBtn.classList.remove("hidden");
 });
 
-/* ===== MODAL CONTROLS ===== */
+
 const modal = document.getElementById("gradeModal");
 const closeBtn = document.getElementById("closeModal");
 const gradeBtn = document.getElementById("gradeBtn");
