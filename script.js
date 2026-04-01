@@ -82,7 +82,7 @@ function saveToGoogleSheets(name, sgpa, subjects) {
   const sgpa = (weightedPoints / totalCredits).toFixed(2);
 
   document.getElementById("result").innerHTML =
-    `🎯 <b>${studentName}, your SGPA is ${sgpa}</b>`;
+   <b>${studentName}, your SGPA is ${sgpa}</b>`;
 
   //google sheet auth
   saveToGoogleSheets(studentName, sgpa, subjects);
