@@ -142,3 +142,16 @@ font-weight:bold;
 transform:scale(1.90);
 color:grey;
 }
+
+.noterediv{
+
+color:rgb(193, 217, 238);
+border-radius: 0.5px;
+border: 1px rgb(12, 166, 22);
+}
+
+
+.Linkedin img {
+  width: 20;
+  height: 20px;
+}
