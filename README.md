@@ -1,15 +1,15 @@
-🎓 FY SGPA Calculator – PICT (Semester 1)
+ FY SGPA Calculator – PICT (Semester 1 and Semester 2)
 
-🔗 Live Website:
-👉 https://pictsgpa-calculator.vercel.app/
+ Live Website:
+ https://pictsgpa-calculator.vercel.app/
 
 A modern, responsive SGPA Calculator for PICT First Year Engineering students (Semester 1), built according to PICT / SPPU evaluation rules.
 
 This project allows students to enter subject-wise marks (theory + labs) and instantly calculate their SGPA, with a clean UI and accurate credit-based computation.
 
-✨ Features
+Features
 
-📘 Theory Subjects Support
+ Theory Subjects Support
 
 Attendance
 
@@ -19,7 +19,7 @@ In-Sem Exam
 
 End-Sem Exam
 
-🧪 Labs & Activities Support
+ Labs & Activities Support
 
 LAC Lab
 
@@ -35,7 +35,7 @@ Soft Skills / FAB
 
 CCA-1
 
-🧮 Accurate SGPA Calculation
+ Accurate SGPA Calculation
 
 Credit-weighted grade points
 
@@ -43,11 +43,11 @@ Marks normalized to 100 where required
 
 Based on official SPPU grading scheme
 
-🧑 Student Name Validation
+ Student Name Validation
 
 SGPA cannot be calculated without entering name
 
-🎨 Clean & Aesthetic UI
+Clean & Aesthetic UI
 
 Mobile responsive
 
@@ -59,9 +59,9 @@ Smooth user experience
 
 Real-time database backend
 
-🚀 Deployed on Vercel
+Deployed on Vercel
 
-🧾 SGPA Calculation Logic
+ SGPA Calculation Logic
 
 Each subject total is calculated out of 100
 
@@ -102,7 +102,7 @@ fy-sgpa-calculator-sem1/
 ├── firebase.js       # Firebase configuration
 ├── README.md
 
-🚀 Getting Started (Local Setup)
+ Getting Started (Local Setup)
 
 1️⃣ Clone the repository
 
