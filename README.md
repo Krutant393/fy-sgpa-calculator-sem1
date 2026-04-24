@@ -3,7 +3,7 @@
  Live Website:
  https://pictsgpa-calculator.vercel.app/
 
-A modern, responsive SGPA Calculator for PICT First Year Engineering students (Semester 1), built according to PICT / SPPU evaluation rules.
+A modern, responsive SGPA Calculator for PICT First Year Engineering students , built according to PICT / SPPU evaluation rules.
 
 This project allows students to enter subject-wise marks (theory + labs) and instantly calculate their SGPA, with a clean UI and accurate credit-based computation.
 
