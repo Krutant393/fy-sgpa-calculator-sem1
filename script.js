@@ -78,13 +78,14 @@ function gradeFromGP(gp) {
 
 
 
-function saveToGoogleSheets(name, sgpa, subjects) {
+function saveToGoogleSheets(name, sgpa, subjects,cgpa) {
   fetch("https://script.google.com/macros/s/AKfycbyXcikuVWbiIZl13fX-fFomm0lBlK5NvAAt6t60hgH92PSEsWY1IK3cdazMgRf_D9Zk/exec", {
     method: "POST",
     body: JSON.stringify({
       name: name,
       sgpa: sgpa,
-      subjects: subjects
+      subjects: subjects,
+      cgpa:cgpa
     })
   })
 
@@ -180,20 +181,31 @@ function saveToGoogleSheets(name, sgpa, subjects) {
     totalCredits += sub.credits;
   });
 
+
   const sgpa = (weightedPoints / totalCredits).toFixed(2);
+const sem1sgpa=document.getElementById("sem1-sgpa").value.trim();
+
+
+const cgpa=(sgpa*21+sem1sgpa*19)/40;
 
 
 
 
 
   document.getElementById("result").innerHTML =
-   `<b>${studentName}, your SGPA is ${sgpa}</b>`;
+   `<b>${studentName}, Your SGPA is: ${sgpa}</b>
+   <br>
+   <br>
+   <b>Your CGPA is: ${cgpa} </b>
+   
+   
+   `;
 
 
 
 
 
-  saveToGoogleSheets(studentName, sgpa, subjects);
+  saveToGoogleSheets(studentName, sgpa, subjects,cgpa);
 
 
   const gradeTable = document.getElementById("gradeTable");
