@@ -78,7 +78,7 @@ function gradeFromGP(gp) {
 
 
 
-function saveToGoogleSheets(name, sgpa, subjects,cgpa) {
+function saveToGoogleSheets(name, sgpa, subjects, cgpa) {
   fetch("https://script.google.com/macros/s/AKfycbyXcikuVWbiIZl13fX-fFomm0lBlK5NvAAt6t60hgH92PSEsWY1IK3cdazMgRf_D9Zk/exec", {
     method: "POST",
     body: JSON.stringify({
@@ -186,7 +186,8 @@ function saveToGoogleSheets(name, sgpa, subjects,cgpa) {
 const sem1sgpa=document.getElementById("sem1-sgpa").value.trim();
 
 
-const cgpa=(sgpa*21+sem1sgpa*19)/40;
+const cgpa=((sgpa*21+sem1sgpa*19)/40).toFixed(2);
+        
 
 
 
