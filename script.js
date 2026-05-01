@@ -33,10 +33,10 @@ function labTo100(marks, max) {
 
 
 function marksToGradePoint(marks) {
-if (marks >= 91) return 10;
-if (marks >= 81) return 9;
-if (marks >= 71) return 8;
-if (marks >= 61) return 7;
+if (marks>=91) return 10;
+if (marks>=81) return 9;
+if (marks>=71) return 8;
+if (marks>=61) return 7;
  if (marks >= 51) return 6;
   if (marks >= 41) return 5;
     return 0;
@@ -50,30 +50,14 @@ if (marks >= 61) return 7;
 
 
 function gradeFromGP(gp) {
-  if (gp === 10) return "O";
-  if (gp === 9) return "A+";
-  if (gp === 8) return "A";
-  if (gp === 7) return "B+";
-  if (gp === 6) return "B";
-  if (gp === 5) return "C";
+  if (gp===10) return "O";
+  if (gp===9) return "A+";
+  if (gp===8) return "A";
+  if (gp===7) return "B+";
+  if (gp===6) return "B";
+  if (gp===5) return "C";
   return "F";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -182,12 +166,13 @@ function saveToGoogleSheets(name, sgpa, subjects, cgpa) {
   });
 
 
-  const sgpa = (weightedPoints / totalCredits).toFixed(2);
+  const sgpa = (weightedPoints/totalCredits).toFixed(2);
 const sem1sgpa=document.getElementById("sem1-sgpa").value.trim();
 
 
 const cgpa=((sgpa*21+sem1sgpa*19)/40).toFixed(2);
         
+console.log(cgpa);
 
 
 
