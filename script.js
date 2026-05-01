@@ -63,22 +63,22 @@ function gradeFromGP(gp) {
 
 
 function saveToGoogleSheets(name, sgpa, subjects, cgpa) {
-  fetch("https://script.google.com/macros/s/AKfycbxYYg0KE-xfsVLbfMh0Rj_Ovtg9mEco6GFkOmA935OCAolRskRpLTNVCKkLbhmVuHN4RQ/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      name: name,
-      sgpa: sgpa,
-      subjects: subjects,
-      cgpa:cgpa
-    })
+fetch("https://script.google.com/macros/s/AKfycbwzbOnce70J7_0GPkh6HzgYETGc4-C2b-sCBOtpH8fMZPvRvJg0k1RxEJNYi2Lm9-8SSw/exec", {
+  method: "POST",
+  mode: "no-cors",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    name,
+    sgpa,
+    subjects,
+    cgpa
   })
+});
+   
 
-
-
-
-
-
-  .then(res => res.text())
+  
   .then(data => console.log(" Sheets:", data))
   .catch(err => console.error(" Sheets Error:", err));
 }
