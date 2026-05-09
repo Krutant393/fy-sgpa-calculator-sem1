@@ -155,3 +155,39 @@ border: 1px rgb(12, 166, 22);
   width: 20;
   height: 20px;
 }
+
+.attendance-section {
+  margin: 25px 0 35px;
+  background: rgba(255, 255, 255, 0.13);
+  padding: 20px;
+  border-radius: 18px;
+}
+
+.attendance-section h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.attendance-table th,
+.attendance-table td {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 12px;
+  text-align: center;
+}
+
+.attendance-table th {
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+}
+
+.attendance-table td {
+  background: rgba(255, 255, 255, 0.08);
+}
+
