@@ -158,7 +158,7 @@ function saveToGoogleSheets(name, sgpa, subjects, cgpa) {
   });
 
 
-  const sgpa = (weightedPoints/totalCredits).toFixed(2);
+  const sgpa = ((weightedPoints/totalCredits).toFixed(2))-1;
 const sem1sgpa=document.getElementById("sem1-sgpa").value.trim();
 
 
