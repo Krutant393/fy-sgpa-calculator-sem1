@@ -162,7 +162,7 @@ function saveToGoogleSheets(name, sgpa, subjects, cgpa) {
 const sem1sgpa=document.getElementById("sem1-sgpa").value.trim();
 
 
-const cgpa=((sgpa*21+sem1sgpa*19)/40).toFixed(2);
+const cgpa=(((sgpa*21+sem1sgpa*19)/40).toFixed(2))-1;
         
 console.log(cgpa);
 
