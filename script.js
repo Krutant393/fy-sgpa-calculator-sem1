@@ -158,12 +158,12 @@ function saveToGoogleSheets(name, sgpa, subjects, cgpa) {
   });
 
 
-  const sgpa = (weightedPoints/totalCredits).toFixed(2);
-const sem1sgpa=document.getElementById("sem1-sgpa").value.trim();
+const sgpa = (weightedPoints / totalCredits).toFixed(2);
 
+const sem1sgpa =Number(document.getElementById("sem1-sgpa").value.trim() || 0);
 
-const cgpa=(sgpa*21+sem1sgpa*19)/40).toFixed(2);
-        
+const cgpa =((Number(sgpa) * 21 + sem1sgpa * 19) / 40).toFixed(2);
+
 console.log(cgpa);
 
 
