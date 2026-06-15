@@ -61,7 +61,7 @@ function gradeFromGP(gp) {
 
 
 
-function saveToGoogleSheets(name, sgpa, subjects, cgpa) {
+function saveToGoogleSheets(name, sgpa, subjects, cgpa,sem1sgpa {
   fetch("https://script.google.com/macros/s/AKfycbwzbOnce70J7_0GPkh6HzgYETGc4-C2b-sCBOtpH8fMZPvRvJg0k1RxEJNYi2Lm9-8SSw/exec", {
     method: "POST",
     mode: "no-cors",
@@ -69,7 +69,8 @@ function saveToGoogleSheets(name, sgpa, subjects, cgpa) {
       name: name,
       sgpa: sgpa,
       subjects: subjects,
-      cgpa: cgpa
+      cgpa: cgpa,
+      sem1sgpa:sem1sgpa
     })
   })
   .then(() => console.log("Saved to Google Sheets"))
@@ -183,7 +184,7 @@ console.log(cgpa);
 
 
 
-  saveToGoogleSheets(studentName, sgpa, subjects,cgpa);
+  saveToGoogleSheets(studentName, sgpa, subjects,cgpa,sem1sgpa);
 
 
   const gradeTable = document.getElementById("gradeTable");
