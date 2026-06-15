@@ -191,3 +191,22 @@ border: 1px rgb(12, 166, 22);
   background: rgba(255, 255, 255, 0.08);
 }
 
+.footer {
+  text-align: center;
+  margin: 30px 0;
+  padding: 10px;
+}
+
+.footer h4 {
+  color: #fff; 
+  font-weight: 500;
+}
+
+.footer a {
+  color: #4da6ff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
